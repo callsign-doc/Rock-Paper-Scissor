@@ -42,62 +42,51 @@ function playRound(playerChoice, computerChoice) {
     console.log("Player choice is " + playerChoice);
     console.log("Computer choice is " + computerChoice);
 
-    // check who wins
     if (isInputValid) {  
-        switch (playerChoice) {
+      switch (playerChoice) {
+        case "Rock":
+          switch (computerChoice) {
             case "Rock":
-              switch (computerChoice) {
-                case "Rock":
-                  console.log("It's a tie!");
-                  break;
-                case "Paper":
-                  console.log("Computer wins!");
-                  break;
-                case "Scissors":
-                  console.log("Player wins!");
-                  break;
-              }
-              break;
-          
+              return "TIE";
             case "Paper":
-              switch (computerChoice) {
-                case "Rock":
-                  console.log("Player wins!");
-                  break;
-                case "Paper":
-                  console.log("It's a tie!");
-                  break;
-                case "Scissors":
-                  console.log("Computer wins!");
-                  break;
-              }
-              break;
-          
+              return "LOSE";
             case "Scissors":
-              switch (computerChoice) {
-                case "Rock":
-                  console.log("Computer wins!");
-                  break;
-                case "Paper":
-                  console.log("Player wins!");
-                  break;
-                case "Scissors":
-                  console.log("It's a tie!");
-                  break;
-              }
-              break;
-        } 
+              return "WIN";
+          }
+          break;
+  
+        case "Paper":
+          switch (computerChoice) {
+            case "Rock":
+              return "WIN";
+            case "Paper":
+              return "TIE";
+            case "Scissors":
+              return "LOSE";
+          }
+          break;
+  
+        case "Scissors":
+          switch (computerChoice) {
+            case "Rock":
+              return "LOSE";
+            case "Paper":
+              return "WIN";
+            case "Scissors":
+              return "TIE";
+          }
+          break;
+      }
     } else {
-        console.log('INVALID INPUT!');
+      return 'INVALID INPUT';
     }
-
-}
+  }
 
 
 // START ROUND
 getComputerChoice();
 checkInputValidity(playerChoice);
-playRound(playerChoice, computerChoice);
+console.log(playRound(playerChoice, computerChoice));
 
 
 
