@@ -31,7 +31,7 @@ function checkInputValidity(x) {
             isInputValid = true;
         } else {
             isInputValid = false;
-            console.log('Player input is valid');
+            console.log('INVALID INPUT');
         }
     }
 }
@@ -86,25 +86,12 @@ function playRound(playerChoice, computerChoice) {
                   break;
               }
               break;
-          
-            default:
-              console.log("Invalid choice. Please choose 'Rock', 'Paper', or 'Scissors'.");
-              break;
-          }   
-
-
-
-        /*
-        if (playerChoice === 'Rock') {
-            console.log('This ROCKS yo')
-        }
-        console.log('input is valid yo');
-
+        } 
     } else {
-        console.log('input INVALID YO!');
-        */
+        console.log('INVALID INPUT!');
     }
-};
+
+}
 
 
 // START ROUND
