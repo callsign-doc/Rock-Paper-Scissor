@@ -1,7 +1,10 @@
-let computerChoice;
-let playerChoice = prompt("Please pick your choice.")
+// declare variable
+let computerChoice = ['Rock', 'Paper', 'Scissor'];
+// player pick choice
+let playerChoice = prompt("Please pick your choice.") 
 let isInputValid;
 
+//computer make choice
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 4);
     console.log(randomNumber);
@@ -16,15 +19,11 @@ function getComputerChoice() {
     console.log(computerChoice);
 }
 
-/* 
-player select choice
-compare choice against computer
-determine who wins against player and computer chocies
-*/
+// DEFINE FUNCTION: check input validity of player
 function checkInputValidity(playerChoice) {
     if (typeof playerChoice === 'string' ) {
-        let firstChar = playerChoice.charAt[0];
-        let charAfterZero = playerChoice.slice(1);
+        let firstChar = playerChoice.charAt(0).toUpperCase();
+        let charAfterZero = playerChoice.slice(1).toLowerCase();
 
         playerChoice = firstChar + charAfterZero;
 
@@ -37,11 +36,68 @@ function checkInputValidity(playerChoice) {
     };
 };
 
+//function to start round
 function playRound(playerChoice, computerChoice) {
+    checkInputValidity(playerChoice);
+
     if (isInputValid) {
+        switch (playerChoice) {
+            case "Rock":
+              switch (computerChoice) {
+                case "Rock":
+                  console.log("It's a tie!");
+                  break;
+                case "Paper":
+                  console.log("Computer wins!");
+                  break;
+                case "Scissors":
+                  console.log("Player wins!");
+                  break;
+              }
+              break;
+          
+            case "Paper":
+              switch (computerChoice) {
+                case "Rock":
+                  console.log("Player wins!");
+                  break;
+                case "Paper":
+                  console.log("It's a tie!");
+                  break;
+                case "Scissors":
+                  console.log("Computer wins!");
+                  break;
+              }
+              break;
+          
+            case "Scissors":
+              switch (computerChoice) {
+                case "Rock":
+                  console.log("Computer wins!");
+                  break;
+                case "Paper":
+                  console.log("Player wins!");
+                  break;
+                case "Scissors":
+                  console.log("It's a tie!");
+                  break;
+              }
+              break;
+          
+            default:
+              console.log("Invalid choice. Please choose 'Rock', 'Paper', or 'Scissors'.");
+              break;
+        }
+
+
+
+        /*
+        if (playerChoice === 'Rock' && computerChoice)
         console.log('input is valid yo');
+
     } else {
         console.log('input INVALID YO!');
+        */
     }
 
     console.log("Player choice is " + playerChoice);
@@ -49,7 +105,7 @@ function playRound(playerChoice, computerChoice) {
 };
 
 
-
+// START ROUND
 getComputerChoice();
 playRound(playerChoice, computerChoice);
 
