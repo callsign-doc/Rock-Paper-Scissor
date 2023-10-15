@@ -1,7 +1,11 @@
 // declare variable
 let computerChoice;
+let playerScore = 0;
+let computerScore = 0;
+let attempt = 0;
+
 // player pick choice
-let playerChoice = prompt("Please pick your choice.");
+let playerChoice;
 let isInputValid;
 
 //DEFINE: computer make choice
@@ -42,54 +46,108 @@ function playRound(playerChoice, computerChoice) {
     console.log("Player choice is " + playerChoice);
     console.log("Computer choice is " + computerChoice);
 
-    if (isInputValid) {  
-      switch (playerChoice) {
-        case "Rock":
-          switch (computerChoice) {
+    if (isInputValid) {
+        let result;
+        // Use a nested switch to determine the winner based on playerChoice and computerChoice
+        switch (playerChoice) {
             case "Rock":
-              return "TIE";
-            case "Paper":
-              return "LOSE";
-            case "Scissors":
-              return "WIN";
-          }
-          break;
-  
-        case "Paper":
-          switch (computerChoice) {
-            case "Rock":
-              return "WIN";
-            case "Paper":
-              return "TIE";
-            case "Scissors":
-              return "LOSE";
-          }
-          break;
-  
-        case "Scissors":
-          switch (computerChoice) {
-            case "Rock":
-              return "LOSE";
-            case "Paper":
-              return "WIN";
-            case "Scissors":
-              return "TIE";
-          }
-          break;
-      }
-    } else {
-      return 'INVALID INPUT';
-    }
-  }
+            switch (computerChoice) {
+                case "Rock":
+                result = "TIE";
+                break;
+                case "Paper":
+                result = "LOSE";
+                computerScore += 1;
+                break;
+                case "Scissors":
+                result = "WIN";
+                playerScore += 1;
+                break;
+            }
+            break;
 
+            case "Paper":
+            switch (computerChoice) {
+                case "Rock":
+                result = "WIN";
+                playerScore += 1;
+                break;
+                case "Paper":
+                result = "TIE";
+                break;
+                case "Scissors":
+                result = "LOSE";
+                computerScore += 1;
+                break;
+            }
+            break;
+
+            case "Scissors":
+            switch (computerChoice) {
+                case "Rock":
+                result = "LOSE";
+                computerScore += 1;
+                break;
+                case "Paper":
+                result = "WIN";
+                playerScore += 1;
+                break;
+                case "Scissors":
+                result = "TIE";
+                break;
+            }
+            break;
+        }
+        return result;
+
+    } else {
+        return 'INVALID INPUT';
+    }
+    
+}
+
+//DECLARE FUNCTION: game() or start round
+function game() {
+    //reask player choice
+    playerChoice = prompt("Please pick your choice.");
+
+    //new computer choice
+    getComputerChoice();
+
+    checkInputValidity(playerChoice);
+    console.log(playRound(playerChoice, computerChoice));
+
+    attempt += 1;
+    if (attempt == 5) {
+        console.log("Player score: " + playerScore);
+        console.log("Computer score: " + computerScore);
+
+        if (playerScore > computerScore) {
+            console.log('GAME OVER: Player win');
+        } else if (playerScore == computerScore) {
+            console.log('ITS A TIE');
+        } else {
+            console.log('GAME OVER: Computer win gg ez')
+        }
+    }
+}
 
 // START ROUND
-getComputerChoice();
-checkInputValidity(playerChoice);
-console.log(playRound(playerChoice, computerChoice));
+game()
+game()
+game()
+game()
+game()
 
 
+/*
+declare player and computer score variable
+play 5 game
+re-ask player choice
+re-generate computer choice
+playRound(playerChoice, computerChoice)
 
+*/
 
 
 
