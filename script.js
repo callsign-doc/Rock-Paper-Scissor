@@ -1,5 +1,6 @@
 let computerChoice;
 let playerChoice = prompt("Please pick your choice.")
+let isInputValid;
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 4);
@@ -20,25 +21,27 @@ player select choice
 compare choice against computer
 determine who wins against player and computer chocies
 */
-function isInputValid(x) {
-    if (typeof x === 'string' ) {
-        let firstChar = x.charAt[0];
-        let charAfterZero = x.slice(1);
+function checkInputValidity(playerChoice) {
+    if (typeof playerChoice === 'string' ) {
+        let firstChar = playerChoice.charAt[0];
+        let charAfterZero = playerChoice.slice(1);
 
         playerChoice = firstChar + charAfterZero;
 
-        if (x === 'Rock' || x === 'Paper' || x == "Scissor") {
-            return true;
-            console.log('Player input is valid');
+        if (playerChoice === 'Rock' || playerChoice === 'Paper' || playerChoice == "Scissor") {
+            isInputValid = true;
         } else {
-            return false;
+            isInputValid = false;
+            console.log('Player input is valid');
         }
     };
 };
 
 function playRound(playerChoice, computerChoice) {
-    if isInputValid(playerChoice) {
-        console.log('Yes i checked once more, the input is valid')
+    if (isInputValid) {
+        console.log('input is valid yo');
+    } else {
+        console.log('input INVALID YO!');
     }
 
     console.log("Player choice is " + playerChoice);
