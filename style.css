@@ -1,12 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2vw;
+    padding-top: 2%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#mainContainer > div {
+    padding: 1%;
+}
+
 #scoreboardContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 50%;
 }
 
 #score {
     display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
-#choiceContainer {
+#gameChoicesContainer {
     display: flex;
+    font-size: 10vw;
+}
+
+
+#choiceOptions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+#choiceOptions > button {
+    font-size: 4vw;
 }
