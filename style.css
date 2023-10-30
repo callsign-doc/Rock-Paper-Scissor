@@ -34,7 +34,11 @@ body {
 
 #gameChoicesContainer {
     display: flex;
-    font-size: 10vw;
+    font-size: 9vw;
+}
+
+#gameChoicesContainer > div {
+    padding: 30px;
 }
 
 
@@ -45,5 +49,5 @@ body {
 }
 
 #choiceOptions > button {
-    font-size: 4vw;
+    font-size: 3vw;
 }

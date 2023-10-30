@@ -6,29 +6,7 @@ let attempt = 0;
 
 // player pick choice
 let playerChoice;
-let isInputValid;
-
-
-const playerChoiceOptions = document.getElementById('choiceOptions');
-
-playerChoiceOptions.addEventListener('click', (event)=> {
-    let buttonSelected = event.target.id;
-
-    switch (buttonSelected) {
-        case 'rockButton':
-            playerChoice = 'Rock';
-            break;
-        case 'paperButton':
-            playerChoice = 'Paper';
-            break;
-        case 'scissorsButton':
-            playerChoice = 'Scissors'
-    }
-
-    console.log(`Player selected ${playerChoice}`)
-})
-
-
+// let isInputValid;
 
 //DEFINE: computer make choice
 function getComputerChoice() {
@@ -44,6 +22,52 @@ function getComputerChoice() {
     }
     console.log(computerChoice);
 }
+
+const playerChoiceOptions = document.getElementById('choiceOptions');
+const playerChoiceUI = document.getElementById('playerChoice');
+const computerChoiceUI = document.getElementById('computerChoice');
+
+
+
+playerChoiceOptions.addEventListener('click', (event)=> {
+    let buttonSelected = event.target.id;
+
+    switch (buttonSelected) {
+        case 'rockButton':
+            playerChoice = 'Rock';
+            playerChoiceUI.textContent = '🪨';
+            break;
+        case 'paperButton':
+            playerChoice = 'Paper';
+            playerChoiceUI.textContent = '🧻';
+            break;
+        case 'scissorsButton':
+            playerChoice = 'Scissors';
+            playerChoiceUI.textContent = '✂️';
+            break;
+    }
+    console.log(`Player selected ${playerChoice}`)
+
+    getComputerChoice();
+    switch (computerChoice) {
+        case 'Rock':
+            computerChoiceUI.textContent = '🪨';
+            break;
+        case 'Paper':
+            computerChoiceUI.textContent = '🧻';
+            break;
+        case 'Scissors':
+            computerChoiceUI.textContent = '✂️';
+            break;
+    }
+})
+
+
+
+
+
+
+
 
 // DEFINE FUNCTION: check input validity of player
 function checkInputValidity(x) {
