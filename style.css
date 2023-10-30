@@ -1,0 +1,12 @@
+#scoreboardContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#score {
+    display: flex;
+}
+
+#choiceContainer {
+    display: flex;
+}

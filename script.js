@@ -133,21 +133,14 @@ function game() {
 }
 
 // START ROUND
-game()
-game()
-game()
-game()
-game()
+// game()
+// game()
+// game()
+// game()
+// game()
 
 
-/*
-declare player and computer score variable
-play 5 game
-re-ask player choice
-re-generate computer choice
-playRound(playerChoice, computerChoice)
 
-*/
 
 
 
