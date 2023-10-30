@@ -8,6 +8,28 @@ let attempt = 0;
 let playerChoice;
 let isInputValid;
 
+
+const playerChoiceOptions = document.getElementById('choiceOptions');
+
+playerChoiceOptions.addEventListener('click', (event)=> {
+    let buttonSelected = event.target.id;
+
+    switch (buttonSelected) {
+        case 'rockButton':
+            playerChoice = 'Rock';
+            break;
+        case 'paperButton':
+            playerChoice = 'Paper';
+            break;
+        case 'scissorsButton':
+            playerChoice = 'Scissors'
+    }
+
+    console.log(`Player selected ${playerChoice}`)
+})
+
+
+
 //DEFINE: computer make choice
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
