@@ -12,7 +12,10 @@ let playerChoice;
 const playerChoiceOptions = document.getElementById('choiceOptions');
 const playerChoiceUI = document.getElementById('playerChoice');
 const computerChoiceUI = document.getElementById('computerChoice');
+
 const announcement = document.getElementById('announcement');
+const playerScoreUI = document.getElementById('playerScore');
+const computerScoreUI = document.getElementById('computerScore');
 
 
 
@@ -125,7 +128,8 @@ playerChoiceOptions.addEventListener('click', (event)=> {
     }
 
     announcement.textContent = determineWinner(playerChoice, computerChoice);
-    
+    playerScoreUI.textContent = 'Player: ' +playerScore;
+    computerScoreUI.textContent = 'Computer: ' + computerScore;
 })
 
 
