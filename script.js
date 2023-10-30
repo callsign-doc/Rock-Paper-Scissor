@@ -8,6 +8,15 @@ let attempt = 0;
 let playerChoice;
 // let isInputValid;
 
+
+const playerChoiceOptions = document.getElementById('choiceOptions');
+const playerChoiceUI = document.getElementById('playerChoice');
+const computerChoiceUI = document.getElementById('computerChoice');
+const announcement = document.getElementById('announcement');
+
+
+
+
 //DEFINE: computer make choice
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -23,10 +32,64 @@ function getComputerChoice() {
     console.log(computerChoice);
 }
 
-const playerChoiceOptions = document.getElementById('choiceOptions');
-const playerChoiceUI = document.getElementById('playerChoice');
-const computerChoiceUI = document.getElementById('computerChoice');
+function determineWinner(playerChoice, computerChoice) {
+    // states both parties choice
+    console.log("Player choice is " + playerChoice);
+    console.log("Computer choice is " + computerChoice);
+    let result;
+    
+    // Use a nested switch to determine the winner based on playerChoice and computerChoice
+    switch (playerChoice) {
+        case "Rock":
+        switch (computerChoice) {
+            case "Rock":
+            result = "TIE";
+            break;
+            case "Paper":
+            result = "LOSE";
+            computerScore += 1;
+            break;
+            case "Scissors":
+            result = "WIN";
+            playerScore += 1;
+            break;
+        }
+        break;
 
+        case "Paper":
+        switch (computerChoice) {
+            case "Rock":
+            result = "WIN";
+            playerScore += 1;
+            break;
+            case "Paper":
+            result = "TIE";
+            break;
+            case "Scissors":
+            result = "LOSE";
+            computerScore += 1;
+            break;
+        }
+        break;
+
+        case "Scissors":
+        switch (computerChoice) {
+            case "Rock":
+            result = "LOSE";
+            computerScore += 1;
+            break;
+            case "Paper":
+            result = "WIN";
+            playerScore += 1;
+            break;
+            case "Scissors":
+            result = "TIE";
+            break;
+        }
+        break;
+    }
+    return result;
+}
 
 
 playerChoiceOptions.addEventListener('click', (event)=> {
@@ -60,6 +123,9 @@ playerChoiceOptions.addEventListener('click', (event)=> {
             computerChoiceUI.textContent = '✂️';
             break;
     }
+
+    announcement.textContent = determineWinner(playerChoice, computerChoice);
+    
 })
 
 
@@ -86,71 +152,9 @@ function checkInputValidity(x) {
     }
 }
 
-//function to start round
-function playRound(playerChoice, computerChoice) {
-    // states both parties choice
-    console.log("Player choice is " + playerChoice);
-    console.log("Computer choice is " + computerChoice);
 
-    if (isInputValid) {
-        let result;
-        // Use a nested switch to determine the winner based on playerChoice and computerChoice
-        switch (playerChoice) {
-            case "Rock":
-            switch (computerChoice) {
-                case "Rock":
-                result = "TIE";
-                break;
-                case "Paper":
-                result = "LOSE";
-                computerScore += 1;
-                break;
-                case "Scissors":
-                result = "WIN";
-                playerScore += 1;
-                break;
-            }
-            break;
 
-            case "Paper":
-            switch (computerChoice) {
-                case "Rock":
-                result = "WIN";
-                playerScore += 1;
-                break;
-                case "Paper":
-                result = "TIE";
-                break;
-                case "Scissors":
-                result = "LOSE";
-                computerScore += 1;
-                break;
-            }
-            break;
 
-            case "Scissors":
-            switch (computerChoice) {
-                case "Rock":
-                result = "LOSE";
-                computerScore += 1;
-                break;
-                case "Paper":
-                result = "WIN";
-                playerScore += 1;
-                break;
-                case "Scissors":
-                result = "TIE";
-                break;
-            }
-            break;
-        }
-        return result;
-
-    } else {
-        return 'INVALID INPUT';
-    }
-    
-}
 
 //DECLARE FUNCTION: game() or start round
 function game() {
