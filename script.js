@@ -49,7 +49,7 @@ function getComputerChoice() {
     console.log(computerChoice);
 }
 
-function determineWinner(playerChoice, computerChoice) {
+function determineResult(playerChoice, computerChoice) {
     // states both parties choice
     console.log("Player choice is " + playerChoice);
     console.log("Computer choice is " + computerChoice);
@@ -108,31 +108,7 @@ function determineWinner(playerChoice, computerChoice) {
     return result;
 }
 
-
-playerChoiceOptions.addEventListener('click', (event)=> {
-    let buttonSelected = event.target.id;
-    
-    switch (buttonSelected) {
-        case 'rockButton':
-            playerChoice = 'Rock';
-            playerChoiceUI.textContent = '🪨';
-            attempt += 1;
-            break;
-        case 'paperButton':
-            playerChoice = 'Paper';
-            playerChoiceUI.textContent = '🧻';
-            attempt += 1;
-            break;
-        case 'scissorsButton':
-            playerChoice = 'Scissors';
-            playerChoiceUI.textContent = '✂️';
-            attempt += 1;
-            break;
-        default:
-            break;
-    }
-    console.log(`Player selected ${playerChoice}`)
-
+function updateComputerChoiceUI() {
     getComputerChoice();
     switch (computerChoice) {
         case 'Rock':
@@ -145,13 +121,61 @@ playerChoiceOptions.addEventListener('click', (event)=> {
             computerChoiceUI.textContent = '✂️';
             break;
     }
+}
 
-    // attempt += 1;
-    attemptCounterUI.textContent = attempt;
+/**
+ player choose option rps
+ attempt +1
+ determine winner
+ announce winner
+ update player score
+ update computer score
+ */
 
-    announcement.textContent = determineWinner(playerChoice, computerChoice);
+ function evaluateRoundResult() {
+    updateComputerChoiceUI();
+    
+    let result = determineResult(playerChoice, computerChoice);
+    announcement.textContent = result;
     playerScoreUI.textContent = 'Player: ' +playerScore;
     computerScoreUI.textContent = 'Computer: ' + computerScore;
+    
+    attempt += 1;
+    attemptCounterUI.textContent = attempt;
+ }
+
+playerChoiceOptions.addEventListener('click', (event)=> {
+    let buttonSelected = event.target.id;
+    
+    switch (buttonSelected) {
+        case 'rockButton':
+            playerChoice = 'Rock';
+            playerChoiceUI.textContent = '🪨';
+            evaluateRoundResult();
+            break;
+        case 'paperButton':
+            playerChoice = 'Paper';
+            playerChoiceUI.textContent = '🧻';
+            evaluateRoundResult();
+            break;
+        case 'scissorsButton':
+            playerChoice = 'Scissors';
+            playerChoiceUI.textContent = '✂️';
+            evaluateRoundResult();
+            break;
+        default:
+            break;
+    }
+    console.log(`Player selected ${playerChoice}`)
+
+    
+
+    // attempt += 1;
+    
+
+    // announcement.textContent = determineResult(playerChoice, computerChoice);
+    // playerScoreUI.textContent = 'Player: ' +playerScore;
+    // computerScoreUI.textContent = 'Computer: ' + computerScore;
 
     if (gameOver(attempt)) {
         retryButton.disabled = false;
