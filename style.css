@@ -28,8 +28,15 @@ body {
 
 #score {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: space-between;
+    width: 90%;
+}
+
+
+#announcementContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
 }
 
 #gameChoicesContainer {

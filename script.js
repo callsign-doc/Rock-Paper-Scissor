@@ -97,7 +97,7 @@ function determineWinner(playerChoice, computerChoice) {
 
 playerChoiceOptions.addEventListener('click', (event)=> {
     let buttonSelected = event.target.id;
-
+    
     switch (buttonSelected) {
         case 'rockButton':
             playerChoice = 'Rock';
