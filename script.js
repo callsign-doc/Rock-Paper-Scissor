@@ -3,6 +3,13 @@ let computerChoice;
 let playerScore = 0;
 let computerScore = 0;
 let attempt = 0;
+let gameOver = function(attempt) {
+    if (attempt < 5) {
+        return false;
+    } else {
+        return true;
+    }
+};
 
 // player pick choice
 let playerChoice;
@@ -10,8 +17,15 @@ let playerChoice;
 
 
 const playerChoiceOptions = document.getElementById('choiceOptions');
+const rockButton = document.getElementById('rockButton');
+const paperButton = document.getElementById('paperButton');
+const scissorsButton = document.getElementById('scissorsButton');
+const retryButton = document.getElementById('retryBtn');
+retryButton.disabled = true;
+
 const playerChoiceUI = document.getElementById('playerChoice');
 const computerChoiceUI = document.getElementById('computerChoice');
+const attemptCounterUI = document.getElementById('attemptCounter');
 
 const announcement = document.getElementById('announcement');
 const playerScoreUI = document.getElementById('playerScore');
@@ -102,14 +116,19 @@ playerChoiceOptions.addEventListener('click', (event)=> {
         case 'rockButton':
             playerChoice = 'Rock';
             playerChoiceUI.textContent = '🪨';
+            attempt += 1;
             break;
         case 'paperButton':
             playerChoice = 'Paper';
             playerChoiceUI.textContent = '🧻';
+            attempt += 1;
             break;
         case 'scissorsButton':
             playerChoice = 'Scissors';
             playerChoiceUI.textContent = '✂️';
+            attempt += 1;
+            break;
+        default:
             break;
     }
     console.log(`Player selected ${playerChoice}`)
@@ -127,9 +146,21 @@ playerChoiceOptions.addEventListener('click', (event)=> {
             break;
     }
 
+    // attempt += 1;
+    attemptCounterUI.textContent = attempt;
+
     announcement.textContent = determineWinner(playerChoice, computerChoice);
     playerScoreUI.textContent = 'Player: ' +playerScore;
     computerScoreUI.textContent = 'Computer: ' + computerScore;
+
+    if (gameOver(attempt)) {
+        retryButton.disabled = false;
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+    } else {
+        retryButton.disabled = true;
+    }
 })
 
 
