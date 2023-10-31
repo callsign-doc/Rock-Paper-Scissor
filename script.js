@@ -182,34 +182,56 @@ playerChoiceOptions.addEventListener('click', (event)=> {
         rockButton.disabled = true;
         paperButton.disabled = true;
         scissorsButton.disabled = true;
+
+        let winner = function(playerScore, computerScore) {
+            if (playerScore > computerScore) {
+                return 'Player wins!';
+            } else if (playerScore < computerScore) {
+                return 'Computer wins!';
+            } else {
+                return 'Issa tie man!';
+            }
+        }
+        announcement.textContent = winner(playerScore, computerScore);
     } else {
         retryButton.disabled = true;
     }
 })
 
+retryButton.addEventListener('click', ()=> {
+    attempt = 0;
+    playerScore = 0;
+    computerScore = 0;
+
+    announcement.textContent = 'Play 5 rounds!';
+    playerScoreUI.textContent = 'Player: ' +playerScore;
+    computerScoreUI.textContent = 'Computer: ' + computerScore;
+    attemptCounterUI.textContent = attempt;
+
+    retryButton.disabled = true;
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
+})
 
 
 
+// // DEFINE FUNCTION: check input validity of player
+// function checkInputValidity(x) {
+//     if (typeof x === 'string' ) {
+//         let firstChar = x.charAt(0).toUpperCase();
+//         let charAfterZero = x.slice(1).toLowerCase();
 
+//         playerChoice = firstChar + charAfterZero;
 
-
-
-// DEFINE FUNCTION: check input validity of player
-function checkInputValidity(x) {
-    if (typeof x === 'string' ) {
-        let firstChar = x.charAt(0).toUpperCase();
-        let charAfterZero = x.slice(1).toLowerCase();
-
-        playerChoice = firstChar + charAfterZero;
-
-        if (playerChoice === 'Rock' || playerChoice === 'Paper' || playerChoice == "Scissors") {
-            isInputValid = true;
-        } else {
-            isInputValid = false;
-            console.log('INVALID INPUT');
-        }
-    }
-}
+//         if (playerChoice === 'Rock' || playerChoice === 'Paper' || playerChoice == "Scissors") {
+//             isInputValid = true;
+//         } else {
+//             isInputValid = false;
+//             console.log('INVALID INPUT');
+//         }
+//     }
+// }
 
 
 
