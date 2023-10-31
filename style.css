@@ -44,10 +44,28 @@ body {
 
 #choiceOptions {
     display: flex;
-    justify-content: space-evenly;
-    width: 50%;
+    flex-direction: column;
+    width: 40%;
 }
 
-#choiceOptions > button {
+#choiceBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#choiceBtn > button {
     font-size: 3vw;
 }
+
+#retryBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    font-size: 3vw;
+}
+
+#retryBtnContainer > button {
+    font-size: 1.5vw;
+}
+
